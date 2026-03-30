@@ -131,26 +131,22 @@ What worked for me is the same thing that works in the best client relationships
 
 Work spanning support platforms, marketplaces, **sustainability**, **ERP**, and **infrastructure**. Most of it runs as **production or client systems**—repos are often private; public pins and links are welcome when you can share them.
 
-| Project | What it does | Stack & notes |
-| :------ | :------------- | :------------- |
-| **Ticketing system** | Multi-portal helpdesk with **live chat** and full ticket lifecycle | Angular, Python · client & support portals · production |
-| **Instamove** | **London** landlord–tenant bookings | Listings, search, booking · real-world usage |
-| **FarmFresh** | Farmhouse-to-retail **fresh produce** ordering | Commerce & supply-chain workflow |
-| **ESG (TobeGreen)** | **ESG** capture, scoring, and analytics | Add a case study or public link when ready |
-| **DOTS ERP** | Enterprise **ERP** modules end-to-end | Sales, inventory, HRM, accounting, payroll · large deployment |
-| **Imimik backup** | **Backup & recovery** with incremental strategy | Reliability-first ops |
-
-<p align="center">
-  <sub>Tip: turn the first column into <code>[Name](url)</code> when a repo or case study is public.</sub>
-</p>
+| Project              | What it does                                                       | Stack & notes                                                 |
+| :------------------- | :----------------------------------------------------------------- | :------------------------------------------------------------ |
+| **Ticketing system** | Multi-portal helpdesk with **live chat** and full ticket lifecycle | Angular, Python · client & support portals · production       |
+| **Instamove**        | **London** landlord–tenant bookings                                | Listings, search, booking · real-world usage                  |
+| **FarmFresh**        | Farmhouse-to-retail **fresh produce** ordering                     | Commerce & supply-chain workflow                              |
+| **ESG (TobeGreen)**  | **ESG** capture, scoring, and analytics                            | Add a case study or public link when ready                    |
+| **DOTS ERP**         | Enterprise **ERP** modules end-to-end                              | Sales, inventory, HRM, accounting, payroll · large deployment |
+| **Imimik backup**    | **Backup & recovery** with incremental strategy                    | Reliability-first ops                                         |
 
 ---
 
 ## Learning · interests · collaboration
 
-**Learning:** AI and intelligent systems · advanced system design · architectures that survive early-stage growth  
+**Learning:** AI and intelligent systems · advanced system design · architectures that survive early-stage growth
 
-**Interests:** Startups · systems that stay coherent at scale · problems with a clear real-world payoff  
+**Interests:** Startups · systems that stay coherent at scale · problems with a clear real-world payoff
 
 **Open to:** architecture discussions, greenfield backend/API design, high-trust product engineering, and thoughtful collaborations—especially where **technical depth** and **delivery discipline** matter.
 
