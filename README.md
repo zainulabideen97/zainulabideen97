@@ -22,7 +22,7 @@
 
 ## About
 
-My work centers on **production systems**: backends that stay healthy under load, APIs teams stay understand, and products that stay maintainable after launch. Over **six years** I’ve built software for real businesses—SaaS, marketplaces, enterprise tooling, and platforms that sit behind customer-facing teams every day.
+My work centers on **production systems**: backends that stay healthy under load, **APIs teams can understand and evolve**, and products that stay maintainable after launch. Over **six years** I’ve built software for real businesses—SaaS, marketplaces, enterprise tooling, and platforms that sit behind customer-facing teams every day.
 
 What worked for me is the same thing that works in the best client relationships: **clarity, consistency, and owning the outcome**—not just the ticket.
 
@@ -129,14 +129,14 @@ What worked for me is the same thing that works in the best client relationships
 
 ## Selected work
 
-Work spanning support platforms, marketplaces, **sustainability**, **ERP**, and **infrastructure**. Most of it runs as **production or client systems**—repos are often private; public pins and links are welcome when you can share them.
+Work spanning support platforms, marketplaces, **sustainability**, **ERP**, and **infrastructure**. Most of it ships as **client-owned or production systems**; my public GitHub is the portion I’m able to show under those constraints.
 
 | Project              | What it does                                                       | Stack & notes                                                 |
 | :------------------- | :----------------------------------------------------------------- | :------------------------------------------------------------ |
 | **Ticketing system** | Multi-portal helpdesk with **live chat** and full ticket lifecycle | Angular, Python · client & support portals · production       |
 | **Instamove**        | **London** landlord–tenant bookings                                | Listings, search, booking · real-world usage                  |
 | **FarmFresh**        | Farmhouse-to-retail **fresh produce** ordering                     | Commerce & supply-chain workflow                              |
-| **ESG (TobeGreen)**  | **ESG** capture, scoring, and analytics                            | Add a case study or public link when ready                    |
+| **ESG (TobeGreen)**  | **ESG** capture, scoring, and analytics                            | Ingestion pipelines, scoring rules, and leadership dashboards · multi-tenant client deployment |
 | **DOTS ERP**         | Enterprise **ERP** modules end-to-end                              | Sales, inventory, HRM, accounting, payroll · large deployment |
 | **Imimik backup**    | **Backup & recovery** with incremental strategy                    | Reliability-first ops                                         |
 
@@ -154,7 +154,7 @@ Work spanning support platforms, marketplaces, **sustainability**, **ERP**, and 
 
 ## Beyond the keyboard
 
-I recharge with **space and motion**—time outside, travel when I can, and keeping a baseline of discipline in daily habits. That steadiness is the same one I bring to long-running systems and long client relationships.
+Outside of delivery work I keep a simple **gym routine**, get **outdoors** when I can, and take **short trips** when the schedule allows. That balance is what lets me stay sharp on long releases and demanding stakeholder cycles.
 
 ---
 
