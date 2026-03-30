@@ -2,8 +2,12 @@
 
 ### Hi, I'm **Zain**
 
+<p align="center">
+  <i>Full-stack engineer · scalable systems · shipping what actually ships</i>
+</p>
+
 <a href="https://github.com/zainulabideen97">
-  <img src="https://readme-typing-svg.demolab.com?font=Inter&weight=600&size=22&pause=1000&color=6366F1&center=true&vCenter=true&width=780&lines=Full-Stack%20Developer%20·%20Building%20Scalable%20Systems;System%20Design%20Focused%20Engineer;Turning%20Ideas%20into%20Production-Ready%20Products" alt="Typing subtitle" />
+  <img src="https://readme-typing-svg.demolab.com/?font=Inter&weight=600&size=22&pause=1000&color=6366F1&center=true&vCenter=true&width=780&lines=Full-Stack%20Developer%20%C2%B7%20Building%20Scalable%20Systems%3BSystem%20Design%20Focused%20Engineer%3BTurning%20Ideas%20into%20Production-Ready%20Products" alt="Rotating subtitles: full-stack developer, system design, shipping production-ready products" />
 </a>
 
 <br/>
@@ -18,34 +22,35 @@
 
 ## About
 
-<p align="center">
-  <sub>Pakistan · Remote · Open to relocation</sub>
-</p>
+My work centers on **production systems**: backends that stay healthy under load, APIs teams stay understand, and products that stay maintainable after launch. Over **six years** I’ve built software for real businesses—SaaS, marketplaces, enterprise tooling, and platforms that sit behind customer-facing teams every day.
 
-I'm a full-stack developer with 6+ years of experience building production-grade applications used by real clients and businesses.
+What worked for me is the same thing that works in the best client relationships: **clarity, consistency, and owning the outcome**—not just the ticket.
 
-I specialize in designing and developing scalable systems, robust backend architectures, and high-performance applications. From SaaS platforms to enterprise systems, I focus on turning complex ideas into reliable, maintainable, and efficient solutions.
+> *Reliability and craft compound. Flashy demos don’t.*
 
-My approach is simple:
-
-- Build systems that scale and perform
-- Write clean, maintainable code
-- Focus on real-world impact, not just features
-
-Currently, I'm deepening my expertise in system design and AI, while working toward building my own startup.
+**Today:** doubling down on **system design** and **AI**, and building toward my own startup.
 
 ---
 
-## What I focus on
+## At a glance
 
-- Designing scalable and production-ready systems
-- Backend architecture, APIs, and performance optimization
-- Building SaaS products and real-world applications
-- Clean code, maintainability, and long-term scalability
+<table>
+<tr>
+<td width="33%" valign="top"><b>Location</b><br/><sub>Pakistan · Remote · Open to relocation</sub></td>
+<td width="33%" valign="top"><b>Core focus</b><br/><sub>Full-stack, distributed systems, APIs, SaaS &amp; enterprise delivery</sub></td>
+<td width="34%" valign="top"><b>How I ship</b><br/><sub>Clean architecture, performance-aware design, long-term maintainability</sub></td>
+</tr>
+</table>
+
+**Principles**
+
+- Systems that **scale and stay understandable**
+- Code that the **next engineer** (or future you) won’t dread touching
+- Impact in **production**, not just in slide decks
 
 ---
 
-## Skills & tech stack
+## Stack & tools
 
 ### Languages
 
@@ -77,22 +82,24 @@ Currently, I'm deepening my expertise in system design and AI, while working tow
 ![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-2088FF?style=for-the-badge&logo=github-actions&logoColor=white)
 ![AWS](https://img.shields.io/badge/AWS-232F3E?style=for-the-badge&logo=amazon-aws&logoColor=white)
 
----
-
-## Tools & workflow
+### Workflow
 
 <table>
 <tr>
-<td align="center" width="140"><b>Editors &amp; IDE</b><br/>VS Code, JetBrains</td>
-<td align="center" width="140"><b>APIs</b><br/>REST, GraphQL</td>
-<td align="center" width="140"><b>Quality</b><br/>Linting, testing, code review</td>
-<td align="center" width="140"><b>Delivery</b><br/>Git, GitHub, CI/CD</td>
+<td align="center" width="140"><b>Tooling</b><br/>VS Code, JetBrains</td>
+<td align="center" width="140"><b>Interfaces</b><br/>REST, GraphQL</td>
+<td align="center" width="140"><b>Quality</b><br/>Linting, tests, review</td>
+<td align="center" width="140"><b>Shipping</b><br/>Git, GitHub, CI/CD</td>
 </tr>
 </table>
 
 ---
 
-## GitHub stats
+## GitHub activity
+
+<p align="center">
+  <sub>Contribution overview, consistency, and language mix—best read as a supplement to shipped work below.</sub>
+</p>
 
 <p align="center">
   <picture>
@@ -120,71 +127,42 @@ Currently, I'm deepening my expertise in system design and AI, while working tow
 
 ---
 
-## Featured projects
+## Selected work
 
-<!-- Add markdown links to public repos when available: [**Name**](https://github.com/zainulabideen97/repo) -->
+Work spanning support platforms, marketplaces, **sustainability**, **ERP**, and **infrastructure**. Most of it runs as **production or client systems**—repos are often private; public pins and links are welcome when you can share them.
 
-### Ticketing system
+| Project | What it does | Stack & notes |
+| :------ | :------------- | :------------- |
+| **Ticketing system** | Multi-portal helpdesk with **live chat** and full ticket lifecycle | Angular, Python · client & support portals · production |
+| **Instamove** | **London** landlord–tenant bookings | Listings, search, booking · real-world usage |
+| **FarmFresh** | Farmhouse-to-retail **fresh produce** ordering | Commerce & supply-chain workflow |
+| **ESG (TobeGreen)** | **ESG** capture, scoring, and analytics | Add a case study or public link when ready |
+| **DOTS ERP** | Enterprise **ERP** modules end-to-end | Sales, inventory, HRM, accounting, payroll · large deployment |
+| **Imimik backup** | **Backup & recovery** with incremental strategy | Reliability-first ops |
 
-Multi-portal support system with live chat, enabling clients to raise tickets and support teams to manage and resolve them efficiently.
-
-- **Stack:** Angular, Python
-- **Highlights:** Client & support portals, live chat, ticket lifecycle management
-- **Context:** Production system used by real clients
-
-### Instamove
-
-London-based platform connecting landlords and tenants for seamless room and flat booking.
-
-- **Context:** Built for real-world usage
-- **Focus:** Property listing, search, booking workflows
-
-### FarmFresh
-
-Platform enabling direct ordering of fresh fruits and vegetables from farmhouses to shop owners.
-
-- **Focus:** Supply chain simplification
-- **Context:** Real-world commerce use case
-
-### ESG platform (TobeGreen)
-
-Sustainability platform for collecting and analyzing ESG data.
-
-- **Focus:** Data collection, scoring, analytics
-- **More:** Add case study, demo, or product link here when you want to share it publicly.
-
-### DOTS ERP system
-
-Comprehensive enterprise system with multiple business modules.
-
-- **Modules:** Sales, purchase, HRM, inventory, accounting, manufacturing, payroll
-- **Context:** Full-scale production ERP solution
-
-### Imimik backup system
-
-Advanced data backup and recovery system with incremental backups.
-
-- **Focus:** Data reliability, recovery, and system safety
+<p align="center">
+  <sub>Tip: turn the first column into <code>[Name](url)</code> when a repo or case study is public.</sub>
+</p>
 
 ---
 
-## Currently learning & exploring
+## Learning · interests · collaboration
 
-- AI and intelligent systems
-- Advanced system design
-- Scalable architectures for startups
+**Learning:** AI and intelligent systems · advanced system design · architectures that survive early-stage growth  
 
----
+**Interests:** Startups · systems that stay coherent at scale · problems with a clear real-world payoff  
 
-## Interests
-
-- Building startups
-- Scalable systems
-- Solving real-world problems
+**Open to:** architecture discussions, greenfield backend/API design, high-trust product engineering, and thoughtful collaborations—especially where **technical depth** and **delivery discipline** matter.
 
 ---
 
-## Contact & social
+## Beyond the keyboard
+
+I recharge with **space and motion**—time outside, travel when I can, and keeping a baseline of discipline in daily habits. That steadiness is the same one I bring to long-running systems and long client relationships.
+
+---
+
+## Connect
 
 <p align="center">
   <a href="mailto:zainjaveed97@gmail.com"><img src="https://img.shields.io/badge/Email-EA4335?style=for-the-badge&logo=gmail&logoColor=white" alt="Email" /></a>
@@ -192,12 +170,8 @@ Advanced data backup and recovery system with incremental backups.
   <a href="https://github.com/zainulabideen97"><img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub" /></a>
 </p>
 
----
-
-## A little more
-
 <p align="center">
-  <i>Solve real problems, not just code.</i>
+  <i>Build what lasts. Ship what earns trust.</i>
 </p>
 
 <div align="center">
