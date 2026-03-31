@@ -14,48 +14,48 @@ The MVP introduces a dedicated backend that syncs Harvest data into a MariaDB wa
 
 ```mermaid
 flowchart LR
-    subgraph Harvest["Harvest SaaS"]
-        HTE[Time Entries]
-        HINV[Invoices]
-        HPAY[Invoice Payments]
-        HUSR[Users / Attorneys]
-        HCLI[Clients & Projects]
+    subgraph harvestLayer ["Harvest SaaS"]
+        HTE["Time entries"]
+        HINV["Invoices"]
+        HPAY["Invoice payments"]
+        HUSR["Users / attorneys"]
+        HCLI["Clients & projects"]
     end
 
-    subgraph Backend["Backend (FastAPI, Python 3.11+)"]
-        HARVEST_CLIENT[Harvest API Client\n`app/clients/harvest_client.py`]
-        SYNC_RUNNER[Harvest Sync Runner (CLI)\n`app/services/harvest_sync_runner.py`]
-        SVC_REPORTS[Reporting & Dashboard Services\n`reporting_service.py`, `dashboard.py`]
-        SVC_BONUS[Bonus & True-up Services\n`bonus_service.py`, `bonus_year_utils.py`, `true_up_service.py`]
-        SVC_COMP[Compensation & Analytics\n`compensation_service.py`, `attorney_analytics_service.py`]
-        SVC_COLLECTIONS[Collections & Payments Sync\n`invoice_payment_sync_service.py`, `collection_service.py`]
-        AUTH[Auth & Users\n`auth_service.py`, `user_service.py`]
-        API[FastAPI Router & Routes\n`app/main.py`, `app/api/*`]
+    subgraph backendLayer ["Backend (FastAPI, Python 3.11+)"]
+        HARVEST_CLIENT["Harvest API client (app/clients/harvest_client.py)"]
+        SYNC_RUNNER["Harvest sync runner CLI (app/services/harvest_sync_runner.py)"]
+        SVC_REPORTS["Reporting & dashboard services (reporting_service.py, dashboard.py)"]
+        SVC_BONUS["Bonus & true-up services (bonus_service.py, bonus_year_utils.py, true_up_service.py)"]
+        SVC_COMP["Compensation & analytics (compensation_service.py, attorney_analytics_service.py)"]
+        SVC_COLLECTIONS["Collections & payments sync (invoice_payment_sync_service.py, collection_service.py)"]
+        AUTH["Auth & users (auth_service.py, user_service.py)"]
+        API["FastAPI router & routes (app/main.py, app/api/*)"]
     end
 
-    subgraph DB["MariaDB (Analytics DB)"]
-        T_TIME[harvest_time_entries]
-        T_INV[harvest_invoices]
-        T_PAY[harvest_invoice_payments]
-        T_USERS[harvest_users]
-        T_PROJECTS[harvest_projects & assignments]
-        T_BONUS[bonus_calcs, payouts, true_ups]
-        T_SYNC[sync_runs & sync_checkpoints]
+    subgraph dbLayer ["MariaDB (analytics DB)"]
+        T_TIME["harvest_time_entries"]
+        T_INV["harvest_invoices"]
+        T_PAY["harvest_invoice_payments"]
+        T_USERS["harvest_users"]
+        T_PROJECTS["harvest_projects & assignments"]
+        T_BONUS["bonus_calcs, payouts, true_ups"]
+        T_SYNC["sync_runs & sync_checkpoints"]
     end
 
-    subgraph Frontend["Frontend (React/Vite)"]
-        UI_LOGIN[Login & Auth Flow\n`LoginPage.tsx`, `ForgotPasswordPage.tsx`]
-        UI_DASH[Attorney Dashboard\n`DashboardPage.tsx`]
-        UI_ATTYS[Attorneys List & Filters\n`AttorneysPage.tsx`]
-        UI_ATTY_DETAIL[Attorney Detail & Bonus View\n`AttorneyDetailsPage.tsx` + subcomponents]
-        UI_MGMT[Management Dashboard\n`ManagementDashboardPage.tsx`]
-        UI_PROJ[Projects View\n`ProjectsPage.tsx`]
-        SHELL[App Shell & Layout\n`App.tsx`, `Shell.tsx`]
+    subgraph frontendLayer ["Frontend (React/Vite)"]
+        UI_LOGIN["Login & auth flow (LoginPage.tsx, ForgotPasswordPage.tsx)"]
+        UI_DASH["Attorney dashboard (DashboardPage.tsx)"]
+        UI_ATTYS["Attorneys list & filters (AttorneysPage.tsx)"]
+        UI_ATTY_DETAIL["Attorney detail & bonus view (AttorneyDetailsPage.tsx + subcomponents)"]
+        UI_MGMT["Management dashboard (ManagementDashboardPage.tsx)"]
+        UI_PROJ["Projects view (ProjectsPage.tsx)"]
+        SHELL["App shell & layout (App.tsx, Shell.tsx)"]
     end
 
-    subgraph Infra["Infra / Ops"]
-        CRON[Cron / Scheduler\nruns `python -m app.services.harvest_sync_runner`]
-        MAILER[Email / PDF Delivery\n`mailer.py`, `management_pdf.py`, `pdf_digest.py`]
+    subgraph infraLayer ["Infra / Ops"]
+        CRON["Cron / scheduler (runs sync runner)"]
+        MAILER["Email / PDF delivery (mailer.py, management_pdf.py, pdf_digest.py)"]
     end
 
     HTE --> HARVEST_CLIENT
@@ -79,14 +79,14 @@ flowchart LR
     API --> SVC_COLLECTIONS
     API --> AUTH
 
-    SVC_REPORTS --> DB
-    SVC_BONUS --> DB
-    SVC_COMP --> DB
-    SVC_COLLECTIONS --> DB
-    AUTH --> DB
+    SVC_REPORTS --> dbLayer
+    SVC_BONUS --> dbLayer
+    SVC_COMP --> dbLayer
+    SVC_COLLECTIONS --> dbLayer
+    AUTH --> dbLayer
 
-    Frontend -->|HTTPS JSON| API
-    MAILER -->|PDF/Email| Attorneys & Management
+    frontendLayer -->|HTTPS JSON| API
+    MAILER -->|PDF / email| AttorneysAndManagement["Attorneys & management"]
 ```
 
 ---

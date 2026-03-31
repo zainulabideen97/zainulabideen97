@@ -8,24 +8,24 @@
 
 ```mermaid
 flowchart LR
-    subgraph Client
-        P[Portal Web App<br/>Angular]
+    subgraph clientLayer [Client]
+        P["Portal Web App (Angular)"]
     end
 
-    subgraph Backend
-        API[Farmhouse Backend<br/>Python handlers]
+    subgraph backendLayer [Backend]
+        API["Farmhouse Backend (Python handlers)"]
     end
 
-    subgraph DB[(MSSQL Database)]
-        BU[BusinessUnits]
-        WH[Warehouses]
-        PROD[Products & ProductItems]
-        SUP[Suppliers]
-        PO[PurchaseOrders & Lines]
-        REC[Receipts & ReceiptLines]
-        SL[StockLevels]
-        ST[StockTakes & Lines]
-        MIN[MinStockLevels]
+    subgraph dbLayer ["MSSQL Database"]
+        BU["BusinessUnits"]
+        WH["Warehouses"]
+        PROD["Products & ProductItems"]
+        SUP["Suppliers"]
+        PO["PurchaseOrders & Lines"]
+        REC["Receipts & ReceiptLines"]
+        SL["StockLevels"]
+        ST["StockTakes & Lines"]
+        MIN["MinStockLevels"]
     end
 
     P -->|HTTPS / JSON APIs| API
@@ -39,11 +39,11 @@ flowchart LR
     API --> ST
     API --> MIN
 
-    subgraph Docs
-        DOCS[Docusaurus Docs<br/>inventory & purchasing schema]
+    subgraph docsLayer [Docs]
+        DOCS["Docusaurus Docs - inventory & purchasing schema"]
     end
 
-    DOCS -.-> Devs & Users
+    DOCS -.-> DevsAndUsers["Developers & Users"]
 ```
 
 ---

@@ -16,35 +16,35 @@ Overall, it reduces response delays, makes ownership clear, and provides a consi
 
 ```mermaid
 flowchart LR
-    subgraph Clients
-        CWeb[Client Portal (Angular)]
-        CEmail[Client Email]
-        CPhone[Client Phone Call]
+    subgraph clientsLayer [Clients]
+        CWeb["Client portal (Angular)"]
+        CEmail["Client email"]
+        CPhone["Client phone call"]
     end
 
-    subgraph Support
-        SWeb[Support Portal (Angular)]
-        Techs[Support Technicians]
+    subgraph supportLayer [Support]
+        SWeb["Support portal (Angular)"]
+        Techs["Support technicians"]
     end
 
-    subgraph Backend["Ticketing Web Server"]
-        API[REST/GraphQL API]
-        Auth[Auth & Roles]
-        Tickets[Ticket Service]
-        Users[User & Contact Service]
-        Alloc[Tech Allocation Engine]
-        SLA[SLA & Reminder Engine]
-        Msg[Message Composer]
-        DB[(Relational DB\nTickets, Users, Messages,\nAssignments, Availability)]
+    subgraph backendLayer ["Ticketing web server"]
+        API["REST / GraphQL API"]
+        Auth["Auth & roles"]
+        Tickets["Ticket service"]
+        Users["User & contact service"]
+        Alloc["Tech allocation engine"]
+        SLA["SLA & reminder engine"]
+        Msg["Message composer"]
+        DB["Relational DB (tickets, users, messages, assignments, availability)"]
     end
 
-    subgraph Integrations
-        EmailSvc[Email Service\n(ticketing-email.service)]
-        SMS[Phone/SMS Gateway]
+    subgraph integrationsLayer [Integrations]
+        EmailSvc["Email service (ticketing-email.service)"]
+        SMS["Phone / SMS gateway"]
     end
 
-    CWeb -->|Create/View Tickets| API
-    SWeb -->|Manage Tickets & Clients| API
+    CWeb -->|Create / view tickets| API
+    SWeb -->|Manage tickets & clients| API
 
     API --> Auth
     API --> Tickets
@@ -65,7 +65,7 @@ flowchart LR
     EmailSvc --> CEmail
     SMS --> CPhone
 
-    Techs <-->|Use Support Portal| SWeb
+    Techs <-->|Use support portal| SWeb
 ```
 
 ---

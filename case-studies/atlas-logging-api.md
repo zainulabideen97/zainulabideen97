@@ -14,60 +14,61 @@ It centralizes data in Azure Cosmos DB, uses OpenAI to generate safe SMS replies
 
 ```mermaid
 flowchart LR
-    subgraph Clients
-        WebLead[Partner / Website\nLead Sources]
-        Meta[Meta Lead Ads]
-        PatientSMS[Patient via SMS]
-        StaffUI[Staff Browser UI]
-        AdminOps[Admin / Ops]
+    subgraph clientsLayer [Clients]
+        WebLead["Partner / Website - lead sources"]
+        Meta["Meta Lead Ads"]
+        PatientSMS["Patient via SMS"]
+        StaffUI["Staff Browser UI"]
+        AdminOps["Admin / Ops"]
     end
 
-    subgraph AtlasLoggingAPI[Atlas Logging API (Flask)]
-        AppFactory[App Factory\ncreate_app()]
-        AuthBP[auth_routes\n(login, 2FA)]
-        IndexBP[index_routes\n(leads, archived)]
-        AtlasBP[atlas_routes\n(work queue, timeline)]
-        LeadBP[lead_routes\n(/lead, /action, /meta)]
-        LogBP[log_routes\n(/summary, /get_logs)]
-        TwilioBP[twilio_routes\n(/webhook/sms)]
-        AdminBP[admin_routes\n(daily summary)]
-        subgraph AtlasCore[Atlas Core Logic]
-            QueueMod[atlas.queue\n(state & scoring)]
-            RulesMod[atlas.rules\n(triage rules engine)]
-            EventsMod[atlas.events\n(event system)]
+    subgraph atlasLoggingApi [Atlas Logging API (Flask)]
+        AppFactory["App factory (create_app)"]
+        AuthBP["auth_routes (login, 2FA)"]
+        IndexBP["index_routes (leads, archived)"]
+        AtlasBP["atlas_routes (work queue, timeline)"]
+        LeadBP["lead_routes (/lead, /action, /meta)"]
+        LogBP["log_routes (/summary, /get_logs)"]
+        TwilioBP["twilio_routes (/webhook/sms)"]
+        AdminBP["admin_routes (daily summary)"]
+        subgraph atlasCore [Atlas Core Logic]
+            QueueMod["atlas.queue (state & scoring)"]
+            RulesMod["atlas.rules (triage rules engine)"]
+            EventsMod["atlas.events (event system)"]
         end
-        subgraph Utils[Utilities]
-            OpenAIHelper[openai_helper\n(gpt-4o, gpt-4o-mini)]
-            Tools[tools, filter_pipeline,\nresponse, sms_helper]
+        subgraph utilsLayer [Utilities]
+            OpenAIHelper["openai_helper (gpt-4o, gpt-4o-mini)"]
+            Tools["tools, filter_pipeline, response, sms_helper"]
         end
     end
 
-    subgraph DataStores[Azure Cosmos DB (SQL API)]
-        Users[users]
-        Leads[leads]
-        Logs[log_entries]
-        CommLogs[communication_logs]
-        Webhooks[webhook_hits]
-        DailySummary[daily_summary_log]
-        AtlasEvents[atlas_events]
-        AtlasState[atlas_lead_state]
+    subgraph dataStores ["Azure Cosmos DB (SQL API)"]
+        Users["users"]
+        Leads["leads"]
+        Logs["log_entries"]
+        CommLogs["communication_logs"]
+        Webhooks["webhook_hits"]
+        DailySummary["daily_summary_log"]
+        AtlasEvents["atlas_events"]
+        AtlasState["atlas_lead_state"]
     end
 
-    subgraph ExternalServices[External Services]
-        TwilioSMS[Twilio SMS]
-        OpenAI[gpt-4o / gpt-4o-mini]
-        MetaGraph[Meta Graph API]
-        ACSEmail[Azure Comm Svcs Email]
+    subgraph externalServices [External Services]
+        TwilioSMS["Twilio SMS"]
+        OpenAI["OpenAI (gpt-4o / gpt-4o-mini)"]
+        MetaGraph["Meta Graph API"]
+        ACSEmail["Azure Communication Services Email"]
     end
 
-    %% Flows
     WebLead -->|POST /lead (API key)| LeadBP
-    Meta -->|Webhook /leads/meta|\nLeadBP
-    PatientSMS -->|Incoming SMS\nTwilio Webhook| TwilioSMS --> TwilioBP
-    StaffUI -->|HTTP + Sessions| AuthBP & IndexBP & AtlasBP & LogBP
-    AdminOps -->|/admin/daily-summary\n(X-Admin-Token)| AdminBP
+    Meta -->|Webhook /leads/meta| LeadBP
+    PatientSMS -->|Incoming SMS via Twilio webhook| TwilioSMS --> TwilioBP
+    StaffUI -->|HTTP + sessions| AuthBP
+    StaffUI --> IndexBP
+    StaffUI --> AtlasBP
+    StaffUI --> LogBP
+    AdminOps -->|/admin/daily-summary (X-Admin-Token)| AdminBP
 
-    %% API to core
     LeadBP --> Leads
     LeadBP --> CommLogs
     LeadBP --> QueueMod
@@ -94,7 +95,6 @@ flowchart LR
     AdminBP --> DailySummary
     AdminBP --> ACSEmail
 
-    %% Utilities and events
     EventsMod --> AtlasEvents
     QueueMod --> AtlasState
     OpenAIHelper --> OpenAI

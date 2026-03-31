@@ -19,25 +19,25 @@
 
 ```mermaid
 flowchart LR
-    subgraph User/Operator
-        U1[Browser - Admin Portal]
+    subgraph userOperator [User / Operator]
+        U1["Browser - Admin Portal"]
     end
 
-    subgraph Web Layer
-        WS[MainWebServer (Tornado)]
-        WH[Web Handlers<br/>MainWebHandler, Auth, Portal]
-        API[API Handlers<br/>core modules]
+    subgraph webLayer [Web Layer]
+        WS["MainWebServer (Tornado)"]
+        WH["Web Handlers - MainWebHandler, Auth, Portal"]
+        API["API Handlers - core modules"]
     end
 
-    subgraph Core Service Layer
-        TS[TrafficService<br/>Selenium + Stealth]
+    subgraph coreServiceLayer [Core Service Layer]
+        TS["TrafficService - Selenium + Stealth"]
     end
 
-    subgraph Infra
-        DB[(MySQL Database)]
-        PROXY[Bright Data Proxy]
-        CAPTCHA[Anti-Captcha<br/>GHL reCAPTCHA v2/v3]
-        CHROME[Headless Chrome\n(undetected-chromedriver)]
+    subgraph infra [Infrastructure]
+        DB["MySQL Database"]
+        PROXY["Bright Data Proxy"]
+        CAPTCHA["Anti-Captcha (GHL reCAPTCHA v2/v3)"]
+        CHROME["Headless Chrome (undetected-chromedriver)"]
     end
 
     U1 -->|HTTP(S)| WS
@@ -54,10 +54,10 @@ flowchart LR
     API --> DB
     WH --> DB
 
-    subgraph Systemd Services
-        S1[kore-outreach.service]
-        S2[scrapper-core-service.service<br/>(runs TrafficService)]
-        S3[kor-acast-service.service]
+    subgraph systemdServices [Systemd Services]
+        S1["kore-outreach.service"]
+        S2["scrapper-core-service.service (runs TrafficService)"]
+        S3["kor-acast-service.service"]
     end
 
     S2 --> TS

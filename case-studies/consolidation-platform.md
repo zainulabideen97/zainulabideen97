@@ -9,14 +9,12 @@
 
 ```mermaid
 flowchart TD
-    A[Browser - Angular client portal] -->|REST/JSON| B[Tornado API\nMainWebServer]
-    B -->|Auth & cookies (RSA tokens)| C[Auth Module]
-    B -->|Business APIs| D[Core Module\nCompanies, Segments, Mappings, Periods,\nTransactions, Users, Conversion Rates]
-    B -->|Static| E[Templates & Assets]
-    D -->|Async SQLAlchemy| F[(PostgreSQL)]
-    B -->|Media| G[Data Storage Root /media]
-    style B fill:#eef,stroke:#336,stroke-width:1px
-    style D fill:#efe,stroke:#363,stroke-width:1px
+    A["Browser - Angular client portal"] -->|REST/JSON| B["Tornado API - MainWebServer"]
+    B -->|Auth & cookies (RSA tokens)| C["Auth module"]
+    B -->|Business APIs| D["Core module - companies, segments, mappings, periods, transactions, users, conversion rates"]
+    B -->|Static| E["Templates & assets"]
+    D -->|Async SQLAlchemy| F["PostgreSQL"]
+    B -->|Media| G["Data storage root /media"]
 ```
 
 ---

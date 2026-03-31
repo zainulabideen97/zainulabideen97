@@ -8,27 +8,27 @@
 
 ```mermaid
 flowchart LR
-    subgraph Client
-        B[Web Browser\n(React/HTML templates)]
+    subgraph clientLayer [Client]
+        B["Web browser (React / HTML templates)"]
     end
 
-    subgraph Backend[Flask App (Instamove)]
-        A[Flask App\napp.py]
-        BP1[Blueprint: home\n/browse, /, search]
-        BP2[Blueprint: properties\nlisting, details, favorites, dashboard]
-        BP3[Blueprints: auth, clients,\nmessages, notifications, payment, webhooks, premium]
-        Admin[Flask-Admin\nManagement Console]
-        Socket[SocketIO\nReal-time messaging/notifications]
-        Celery[Celery Worker + Beat\nBackground tasks]
+    subgraph backendLayer ["Flask app (Instamove)"]
+        A["Flask app (app.py)"]
+        BP1["Blueprint: home (/browse, /, search)"]
+        BP2["Blueprint: properties (listing, details, favourites, dashboard)"]
+        BP3["Blueprints: auth, clients, messages, notifications, payment, webhooks, premium"]
+        Admin["Flask-Admin management console"]
+        Socket["Socket.IO (real-time messaging / notifications)"]
+        Celery["Celery worker + beat (background tasks)"]
     end
 
-    subgraph Data
-        DB[(PostgreSQL\nProperties, Clients,\nMessages, Metrics, Premium)]
-        S3[(AWS S3\nImages & Videos)]
-        Stripe[(Stripe\nPayments & Billing)]
-        SES[(AWS SES\nTransactional Email)]
-        GoogleSSO[(Google OAuth\nSocial Login)]
-        Maps[(Google Maps & GetAddress\nGeocoding & Stations)]
+    subgraph dataLayer [Data]
+        DB["PostgreSQL (properties, clients, messages, metrics, premium)"]
+        S3["AWS S3 (images & videos)"]
+        Stripe["Stripe (payments & billing)"]
+        SES["AWS SES (transactional email)"]
+        GoogleSSO["Google OAuth (social login)"]
+        Maps["Google Maps & GetAddress (geocoding & stations)"]
     end
 
     B <--> A

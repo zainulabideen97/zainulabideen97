@@ -9,35 +9,35 @@
 ### Architecture diagram (mermaid)
 
 ```mermaid
-graph TD
-    subgraph Browser
-        OP[Owner Portal (React/TS)]
-        SP[Supplier Portal (React/TS + Supabase)]
+flowchart TD
+    subgraph browserLayer [Browser]
+        OP["Owner Portal (React/TS)"]
+        SP["Supplier Portal (React/TS + Supabase)"]
     end
 
-    subgraph Backend
-        AUTH[Auth Service / /auth\n(login, logout, me, refresh)]
-        CLIENTS[Clients API / /clients\nCRUD clients, status]
+    subgraph backendLayer [Backend]
+        AUTH["Auth service (/auth - login, logout, me, refresh)"]
+        CLIENTS["Clients API (/clients - CRUD clients, status)"]
     end
 
-    subgraph Infra
-        SUPA[Supabase Auth\n(users, sessions)]
-        DB[(Postgres / ESG DB)]
-        STORAGE[(Object Storage\nDocuments, uploads)]
+    subgraph infraLayer [Infrastructure]
+        SUPA["Supabase Auth (users, sessions)"]
+        DB["Postgres - ESG DB"]
+        STORAGE["Object storage (documents, uploads)"]
     end
 
     OP -->|Bearer token via /auth| AUTH
     OP -->|Bearer token via /clients| CLIENTS
 
-    SP -->|Supabase JS SDK\nemail+password| SUPA
+    SP -->|Supabase JS SDK - email+password| SUPA
 
-    AUTH -->|validate user\nissue JWT| SUPA
+    AUTH -->|validate user and issue JWT| SUPA
     AUTH -->|read/write auth users| DB
     CLIENTS -->|CRUD client records| DB
     SP -->|upload docs| STORAGE
 
-    OP -.->|Owner creates client\ngets temp password| DB
-    DB -.->|client user exists\nlogin via Supplier Portal| SP
+    OP -.->|Owner creates client and gets temp password| DB
+    DB -.->|Client user exists and can log in via Supplier Portal| SP
 ```
 
 ---
