@@ -108,9 +108,9 @@ flowchart LR
 
 ```mermaid
 flowchart LR
-    Login[Login Screen\n(username + password)]
-    Setup2FA[2FA Setup\n(QR code, secret)]
-    Verify2FA[2FA Verify\n(OTP input)]
+    Login[Login Screen\nUsername and password]
+    Setup2FA[2FA Setup\nQR code and secret]
+    Verify2FA[2FA Verify\nOTP input]
 
     LeadsUI[Leads List\n(filters, pagination)]
     ArchivedUI[Archived Leads\n(archive/unarchive)]
