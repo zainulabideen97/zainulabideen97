@@ -60,14 +60,14 @@ flowchart LR
         ACSEmail["Azure Communication Services Email"]
     end
 
-    WebLead -->|POST /lead (API key)| LeadBP
-    Meta -->|Webhook /leads/meta| LeadBP
-    PatientSMS -->|Incoming SMS via Twilio webhook| TwilioSMS --> TwilioBP
-    StaffUI -->|HTTP + sessions| AuthBP
+    WebLead --> LeadBP
+    Meta --> LeadBP
+    PatientSMS --> TwilioSMS --> TwilioBP
+    StaffUI --> AuthBP
     StaffUI --> IndexBP
     StaffUI --> AtlasBP
     StaffUI --> LogBP
-    AdminOps -->|/admin/daily-summary (X-Admin-Token)| AdminBP
+    AdminOps --> AdminBP
 
     LeadBP --> Leads
     LeadBP --> CommLogs
