@@ -32,7 +32,7 @@ It centralizes data in Azure Cosmos DB, uses OpenAI to generate safe SMS replies
   <img src="./images/workflow.svg" alt="Atlas Logging API workflow sequence diagram" />
 </p>
 
-**---
+---
 
 ### Results / impact
 
