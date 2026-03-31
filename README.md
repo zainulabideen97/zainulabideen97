@@ -148,19 +148,19 @@ For a subset of these systems I’ve written **short, architecture-focused case 
 
 - **Realistic Traffic Generator** – multi-tenant, human-like traffic and signup automation with strict per-site limits and observability.  
   _Python, Tornado, Selenium, MySQL_  
-  - Case study: [`Realistic Traffic Generator`](https://github.com/zainulabideen97/zainulabideen97/blob/main/case-studies/realistic-traffic-generator.md)
+  - Case study: [`Realistic Traffic Generator`](./case-studies/realistic-traffic-generator/)
 
 - **AllFresh Farmhouse Ordering** – internal ordering, purchasing, and inventory for fresh-produce businesses across multiple units and a virtual warehouse per unit.  
   _Angular, Python backend, MSSQL_  
-  - Case study: [`AllFresh Farmhouse Ordering`](https://github.com/zainulabideen97/zainulabideen97/blob/main/case-studies/allfresh-farmhouse-ordering.md)
+  - Case study: [`AllFresh Farmhouse Ordering`](./case-studies/allfresh-farmhouse-ordering/)
 
 - **Atlas Logging API** – lead intake + SMS automation для a medical practice, combining rules + GPT to triage and queue work for staff.  
   _Flask, Azure Cosmos DB, Twilio, OpenAI_  
-  - Case study: [`Atlas Logging API`](https://github.com/zainulabideen97/zainulabideen97/blob/main/case-studies/atlas-logging-api.md)
+  - Case study: [`Atlas Logging API`](./case-studies/atlas-logging-api/)
 
 You can find the **full list** (including ESG, consolidation, Harvest reporting, ticketing, and more) in:
 
-- [`case-studies/INDEX.md`](https://github.com/zainulabideen97/zainulabideen97/blob/main/case-studies/INDEX.md)
+- [`case-studies/INDEX.md`](./case-studies/INDEX.md)
 
 ---
 

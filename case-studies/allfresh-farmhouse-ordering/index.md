@@ -39,11 +39,6 @@ flowchart LR
     API --> ST
     API --> MIN
 
-    subgraph docsLayer [Docs]
-        DOCS["Docusaurus Docs - inventory & purchasing schema"]
-    end
-
-    DOCS -.-> DevsAndUsers["Developers & Users"]
 ```
 
 ---
@@ -131,4 +126,3 @@ sequenceDiagram
 - **Reduced stockouts & overstock**: Min/target stock levels plus shortfall calculations across on‑hand and on‑order quantities enable proactive reordering and better cash‑flow control.
 - **Scalability across business units**: One virtual warehouse per business unit with shared product catalog supports growth into new regions while keeping data properly isolated.
 - **Improved visibility & decision‑making**: Portal screens for recent orders, inventory, receiving, and stock takes give managers real‑time insight into supply chain status, enabling faster responses to demand or supplier issues.
-
