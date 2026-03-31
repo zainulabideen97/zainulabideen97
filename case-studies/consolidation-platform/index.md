@@ -5,56 +5,28 @@
 
 ---
 
-## Architecture (Mermaid)
+## Architecture
 
-```mermaid
-flowchart TD
-    A["Browser - Angular client portal"] -->|REST/JSON| B["Tornado API - MainWebServer"]
-    B -->|Auth & cookies| C["Auth module"]
-    B -->|Business APIs| D["Core module - companies, segments, mappings, periods, transactions, users, conversion rates"]
-    B -->|Static| E["Templates & assets"]
-    D -->|Async SQLAlchemy| F["PostgreSQL"]
-    B -->|Media| G["Data storage root /media"]
-```
+<p align="center">
+  <img src="./images/architecture-diagram.svg" alt="Consolidation system architecture diagram" />
+</p>
 
 ---
 
-## UI Screens (Mermaid)
+## UI Screens
 
-```mermaid
-flowchart LR
-    L[Login / Register] --> S[Segments]
-    S --> M[Mappings]
-    L --> C[Subsidiaries]
-    C --> U[Users]
-    L --> R[Rates]
-    R --> P[Periods]
-    P --> T[Transactions]
-    T --> BR[Reports: Balance Sheet]
-    T --> TB[Reports: Trial Balance]
-    M --> T
-    style BR fill:#f5f5ff
-    style TB fill:#f5f5ff
-```
+<p align="center">
+  <img src="./images/ui-screens.svg" alt="Consolidation UI screens" />
+</p>
 
 ---
 
-## Workflow (Mermaid)
+## Workflow
 
-```mermaid
-flowchart TD
-    A[Authenticate / Register] --> B[Create Parent & Subsidiaries]
-    B --> C[Auto-create account/reporting segments]
-    C --> D[Load currencies & set conversion rates]
-    D --> E[Define mappings\n(child to parent segments/accounts)]
-    E --> F[Open periods/subperiods]
-    F --> G[Capture/Import transactions & entries]
-    G --> H[Post or reverse transactions]
-    H --> I[Run reports\n(Balance Sheet, Trial Balance)]
-    I --> J[Export / Share]
-```
+<p align="center">
+  <img src="./images/workflow.svg" alt="Consolidation workflow sequence diagram" />
+</p>
 
-(If you need a video, I can script it next—providing the mermaid diagram for now.)
 
 ---
 
@@ -65,4 +37,3 @@ flowchart TD
 - FX-ready numbers through managed conversion rates per company/currency/date.
 - Auditability: posting/reversal flags, creator/updater tracking, and secure cookie/RSA-based auth.
 - Decision-ready reports: balance sheet and trial balance views aligned to the consolidated chart.
-

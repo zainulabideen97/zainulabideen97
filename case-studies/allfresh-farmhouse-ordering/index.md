@@ -4,119 +4,27 @@
 
 ---
 
-### Architecture diagram (Mermaid)
+### Architecture diagram
 
-```mermaid
-flowchart LR
-    subgraph clientLayer [Client]
-        P["Portal Web App (Angular)"]
-    end
-
-    subgraph backendLayer [Backend]
-        API["Farmhouse Backend (Python handlers)"]
-    end
-
-    subgraph dbLayer ["MSSQL Database"]
-        BU["BusinessUnits"]
-        WH["Warehouses"]
-        PROD["Products & ProductItems"]
-        SUP["Suppliers"]
-        PO["PurchaseOrders & Lines"]
-        REC["Receipts & ReceiptLines"]
-        SL["StockLevels"]
-        ST["StockTakes & Lines"]
-        MIN["MinStockLevels"]
-    end
-
-    P -->|HTTPS / JSON APIs| API
-    API --> BU
-    API --> WH
-    API --> PROD
-    API --> SUP
-    API --> PO
-    API --> REC
-    API --> SL
-    API --> ST
-    API --> MIN
-
-```
+<p align="center">
+  <img src="./images/architecture-diagram.svg" alt="AllFresh Farmhouse Ordering system architecture diagram" />
+</p>
 
 ---
 
-### UI screens (Mermaid)
+### UI screens
 
-```mermaid
-flowchart TD
-    LOGIN[Login]
-    DASH[Home / Dashboard]
-    RECENT[Recent Orders List]
-    RECENT_DETAILS[Order Details]
-    INV[Inventory / Stock Levels]
-    PO_SCREEN[Purchase Orders]
-    PO_CREATE[Create / Edit PO]
-    REC_SCREEN[Receiving Batches]
-    ST_SCREEN[Stock Takes]
-    SHORTFALL[Shortfall / Reorder Report]
-    ADMIN[Business / Warehouse Admin]
-
-    LOGIN --> DASH
-    DASH --> RECENT
-    RECENT --> RECENT_DETAILS
-
-    DASH --> INV
-    DASH --> PO_SCREEN
-    DASH --> ST_SCREEN
-    DASH --> SHORTFALL
-    DASH --> ADMIN
-
-    PO_SCREEN --> PO_CREATE
-    PO_SCREEN --> REC_SCREEN
-    REC_SCREEN --> INV
-
-    ST_SCREEN --> INV
-    SHORTFALL --> PO_CREATE
-```
+<p align="center">
+  <img src="./images/ui-screens.svg" alt="AllFresh Farmhouse Ordering UI screens" />
+</p>
 
 ---
 
-### Workflow (Mermaid)
+### Workflow
 
-```mermaid
-sequenceDiagram
-    participant Planner as Planner
-    participant Portal as Portal (Angular)
-    participant API as Backend API
-    participant DB as MSSQL DB
-    participant Supplier as Supplier
-
-    Planner->>Portal: Log in & open Shortfall Report
-    Portal->>API: GET /shortfall
-    API->>DB: Query StockLevels + OnOrder + MinStockLevels
-    DB-->>API: Shortfall data
-    API-->>Portal: Shortfall list
-    Planner->>Portal: Select items to reorder
-    Portal->>API: POST /purchase-orders
-    API->>DB: Create PurchaseOrders + Lines
-
-    API-->>Portal: PO confirmation
-    Planner->>Supplier: Send PO (email/EDI/out of band)
-
-    Supplier->>Warehouse: Deliver goods
-    Receiver->>Portal: Open Receiving screen
-    Portal->>API: GET /purchase-orders/{id}
-    Receiver->>Portal: Enter received quantities (batches)
-    Portal->>API: POST /receipts
-    API->>DB: Insert Receipts & ReceiptLines, update StockLevels
-
-    Periodically Receiver->>Portal: Start Stock Take
-    Portal->>API: POST /stock-takes
-    API->>DB: Snapshot StockLevels & create StockTakeLines
-    Receiver->>Portal: Count and submit quantities
-    Portal->>API: PUT /stock-takes/{id}/confirm
-    API->>DB: Adjust StockLevels to counted quantities
-```
-
-*(This sequence can be used as the storyboard for a short explainer video: each lifeline and message becomes a scene or animation step.)*
+<p align="center">
+  <img src="./images/workflow.svg" alt="AllFresh Farmhouse Ordering workflow sequence diagram" />
+</p>
 
 ---
 

@@ -14,95 +14,17 @@ Overall, it reduces response delays, makes ownership clear, and provides a consi
 
 ## Architecture diagram (mermaid)
 
-```mermaid
-flowchart LR
-    subgraph clientsLayer [Clients]
-        CWeb["Client portal (Angular)"]
-        CEmail["Client email"]
-        CPhone["Client phone call"]
-    end
-
-    subgraph supportLayer [Support]
-        SWeb["Support portal (Angular)"]
-        Techs["Support technicians"]
-    end
-
-    subgraph backendLayer ["Ticketing web server"]
-        API["REST / GraphQL API"]
-        Auth["Auth & roles"]
-        Tickets["Ticket service"]
-        Users["User & contact service"]
-        Alloc["Tech allocation engine"]
-        SLA["SLA & reminder engine"]
-        Msg["Message composer"]
-        DB["Relational DB (tickets, users, messages, assignments, availability)"]
-    end
-
-    subgraph integrationsLayer [Integrations]
-        EmailSvc["Email service (ticketing-email.service)"]
-        SMS["Phone / SMS gateway"]
-    end
-
-    CWeb -->|Create / view tickets| API
-    SWeb -->|Manage tickets & clients| API
-
-    API --> Auth
-    API --> Tickets
-    API --> Users
-    Tickets --> Alloc
-    Tickets --> SLA
-    Tickets --> Msg
-    Alloc --> DB
-    Tickets --> DB
-    Users --> DB
-    SLA --> DB
-    Msg --> DB
-
-    SLA -->|Unanswered ticket alerts| EmailSvc
-    Msg -->|Ticket replies| EmailSvc
-    Msg -->|Ticket replies| SMS
-
-    EmailSvc --> CEmail
-    SMS --> CPhone
-
-    Techs <-->|Use support portal| SWeb
-```
+<p align="center">
+  <img src="./images/architecture-diagram.svg" alt="Ticketing and Support system architecture diagram" />
+</p>
 
 ---
 
 ## UI screens (mermaid diagram)
 
-```mermaid
-flowchart TD
-    subgraph ClientPortal["Client Portal"]
-        CP_Dash[Client Dashboard\n- Open tickets summary\n- Status widgets]
-        CP_TicketsList[Tickets List\n- Filter: All / Open / Closed\n- Filter: Unassigned\n- Search & Sort]
-        CP_TicketDetails[Ticket Details\n- Conversation thread\n- Attachments\n- Assigned technician\n- SLA/last response]
-        CP_NewTicket[New Ticket Form\n- Subject, Description\n- Category, Priority\n- Contact email/phone\n- Attachments]
-        CP_Profile[Client Profile\n- Organization info\n- Contact preferences]
-    end
-
-    subgraph SupportPortal["Support Portal"]
-        SP_Dash[Support Dashboard\n- Ticket queues\n- Unassigned tickets widget\n- SLA at-risk]
-        SP_TicketsList[Ticket Queue\n- Filters: Unassigned / My tickets / Team\n- Status, Priority, Client]
-        SP_TicketDetailsS[Ticket Details\n- Assign/Unassign technician\n- Set status & priority\n- Internal notes\n- Reply by email/phone]
-        SP_Clients[Clients List\n- Search clients\n- Client details]
-        SP_ClientForm[Client Form\n- Edit client info\n- Contact email/phone]
-        SP_Settings[Tech Availability & Routing\n- Availability status\n- Skills / groups]
-    end
-
-    CP_Dash --> CP_TicketsList
-    CP_TicketsList --> CP_TicketDetails
-    CP_Dash --> CP_NewTicket
-    CP_TicketDetails --> CP_NewTicket
-    CP_Dash --> CP_Profile
-
-    SP_Dash --> SP_TicketsList
-    SP_TicketsList --> SP_TicketDetailsS
-    SP_Dash --> SP_Clients
-    SP_Clients --> SP_ClientForm
-    SP_Dash --> SP_Settings
-```
+<p align="center">
+  <img src="./images/ui-screens.svg" alt="Ticketing and Support UI screens" />
+</p>
 
 ---
 
@@ -110,49 +32,9 @@ flowchart TD
 
 ### End‑to‑end ticket lifecycle
 
-```mermaid
-sequenceDiagram
-    actor Client
-    participant CPortal as Client Portal
-    participant SPortal as Support Portal
-    participant API as Ticketing API
-    participant Alloc as Allocation Engine
-    participant SLA as SLA & Reminder
-    participant Email as Email Service
-    participant SMS as Phone/SMS
-
-    Client->>CPortal: Create new ticket\n(subject, description, contact info)
-    CPortal->>API: POST /tickets
-    API->>Alloc: Evaluate available technicians\n(by skills, availability, client)
-    Alloc-->>API: Selected technician (or none)
-    API->>API: Create ticket + assignment in DB
-    API->>Email: Send ticket created email\n(to client + assigned tech)
-    API->>SPortal: Push to ticket queue view
-
-    Note over SLA,API: Start SLA / no‑response timers
-
-    SPortal->>Tech: Tech sees new/unassigned tickets\n(via dashboard & filters)
-    Tech->>SPortal: Open ticket, update status,\nadd reply (email/phone)
-    SPortal->>API: POST /tickets/{id}/messages
-    API->>Email: Send reply email to client
-    API->>SMS: Optionally send reply/notification SMS
-    API->>SLA: Register activity (response time)
-
-    SLA->>SLA: Check timer: has anyone responded?
-    alt No response within threshold
-        SLA->>Email: Send reminder to tech / team\n(or escalate)
-    end
-
-    Client->>CEmail: Reads email / replies via email
-    CEmail->>Email: Reply received
-    Email->>API: Webhook / inbound email\n-> new message on ticket
-    API->>SPortal: Update ticket conversation
-    API->>CPortal: Update ticket details
-
-    Tech->>SPortal: Resolve ticket
-    SPortal->>API: PATCH /tickets/{id}\nstatus = Resolved/Closed
-    API->>Email: Send resolution email & feedback link
-```
+<p align="center">
+  <img src="./images/workflow.svg" alt="Ticketing and Support workflow sequence diagram" />
+</p>
 
 ---
 
@@ -162,4 +44,3 @@ sequenceDiagram
 - **Higher visibility and accountability**: Dashboards for both clients and support teams, plus clear assignment and status, make ownership obvious and support performance measurable.
 - **Improved client experience**: Clients can submit and track tickets via the portal and receive consistent updates by email/phone, increasing trust and satisfaction.
 - **Operational efficiency**: Centralized ticket and contact data, structured workflows, and integrated email/phone communications reduce manual coordination, duplicated effort, and miscommunication.
-
