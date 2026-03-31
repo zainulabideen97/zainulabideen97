@@ -40,16 +40,16 @@ flowchart LR
         CHROME["Headless Chrome (undetected-chromedriver)"]
     end
 
-    U1 -->|HTTP(S)| WS
+    U1 --> WS
     WS --> WH
     WS --> API
 
-    WS <-->|async sessions| DB
+    WS --> DB
 
-    TS <-->|SQLAlchemy sessions| DB
-    TS -->|HTTP via proxy| PROXY
-    TS -->|Automated browsing| CHROME
-    CHROME -->|solves challenges| CAPTCHA
+    TS --> DB
+    TS --> PROXY
+    TS --> CHROME
+    CHROME --> CAPTCHA
 
     API --> DB
     WH --> DB

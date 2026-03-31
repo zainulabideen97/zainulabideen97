@@ -99,9 +99,9 @@ This focuses on the main screens and key data they surface, aligned with your `h
 flowchart TD
     START[Login Screen\nEmail + Password + TOTP]
     FORGOT[Forgot Password\nReset Request]
-    DASH[Attorney Dashboard (Tab 1: Summary)]
-    PIPELINE[Revenue Pipeline & Aging (Tab 2)]
-    PRODUCTIVITY[Time & Productivity (Tab 3)]
+    DASH[Attorney Dashboard\nTab 1 - Summary]
+    PIPELINE[Revenue Pipeline & Aging\nTab 2]
+    PRODUCTIVITY[Time & Productivity\nTab 3]
     ATTYS[Attorneys List\n(firm-wide view)]
     ATTY_DETAIL[Attorney Detail Screen\nQTD/YTD, Bonus, Uninvoiced, Collections]
     BONUS_SEC[Bonus Dashboard & Q4 True-up Card]

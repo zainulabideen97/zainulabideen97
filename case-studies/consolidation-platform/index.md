@@ -10,7 +10,7 @@
 ```mermaid
 flowchart TD
     A["Browser - Angular client portal"] -->|REST/JSON| B["Tornado API - MainWebServer"]
-    B -->|Auth & cookies (RSA tokens)| C["Auth module"]
+    B -->|Auth & cookies| C["Auth module"]
     B -->|Business APIs| D["Core module - companies, segments, mappings, periods, transactions, users, conversion rates"]
     B -->|Static| E["Templates & assets"]
     D -->|Async SQLAlchemy| F["PostgreSQL"]

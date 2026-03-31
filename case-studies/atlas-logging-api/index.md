@@ -22,7 +22,7 @@ flowchart LR
         AdminOps["Admin / Ops"]
     end
 
-    subgraph atlasLoggingApi [Atlas Logging API (Flask)]
+    subgraph atlasLoggingApi [Atlas Logging API]
         AppFactory["App factory (create_app)"]
         AuthBP["auth_routes (login, 2FA)"]
         IndexBP["index_routes (leads, archived)"]
